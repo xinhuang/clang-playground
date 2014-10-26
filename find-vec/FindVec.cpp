@@ -15,8 +15,7 @@ using namespace clang::ast_matchers;
 static const char* FunctionID = "function-id";
 clang::ast_matchers::DeclarationMatcher M = functionDecl(
     decl().bind(FunctionID),
-    hasAnyParameter(hasType(recordDecl(matchesName("std::vector"))))
-    );
+    hasAnyParameter(hasType(recordDecl(matchesName("std::vector")))));
 
 class VecCallback : public clang::ast_matchers::MatchFinder::MatchCallback {
 public:
