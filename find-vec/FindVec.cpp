@@ -14,7 +14,8 @@ using namespace clang::ast_matchers;
 
 static const char* FunctionID = "function-id";
 clang::ast_matchers::DeclarationMatcher M = functionDecl(
-    decl().bind(FunctionID)
+    decl().bind(FunctionID),
+    hasAnyParameter(hasType(recordDecl(matchesName("std::vector"))))
     );
 
 class VecCallback : public clang::ast_matchers::MatchFinder::MatchCallback {
@@ -24,7 +25,11 @@ public:
     llvm::outs() << ".";
     if (const auto *F =
             Result.Nodes.getDeclAs<clang::FunctionDecl>(FunctionID)) {
-      F->dump();
+      const auto& SM = *Result.SourceManager;
+      const auto& Loc = F->getLocation();
+      llvm::outs() << SM.getFilename(Loc) << ":"
+                   << SM.getSpellingLineNumber(Loc) << ":"
+                   << SM.getSpellingColumnNumber(Loc) << "\n";
     }
   }
 };
