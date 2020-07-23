@@ -3,6 +3,8 @@ clang-playground
 
 This is the repository for clang-playground series.
 
+*I haven't follow LLVM/Clang for a long time, so this guide maybe not compile or outdated. Please take the code here for reference only.*
+
 ## How to Build
 
 Clone LLVM source:  
@@ -24,7 +26,7 @@ make -j
 
 Find all the declarations in a given file.
 
-Tutor: [Clang Playground: Finding Declarations]
+Tutor: [Clang Playground: Finding Declarations], [Clang Playground: The AST Matcher]
 
-[Clang Playground: Finding Declarations]:http://xinhuang.github.io/clang/2014/10/19/clang-playground-finding-declarations
-
+[Clang Playground: Finding Declarations]:https://xinhuang.github.io/posts/2014-10-19-clang-tutorial-finding-declarations.html
+[Clang Playground: The AST Matcher]:https://xinhuang.github.io/posts/2015-02-08-clang-tutorial-the-ast-matcher.html
